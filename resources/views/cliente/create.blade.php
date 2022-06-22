@@ -26,6 +26,33 @@
                         {{-- <form action="{{ route('clientes.store') }}" method="post" class="needs-validation" autocomplete="off" novalidate> --}}
                         <form action="{{ route('clientes.store') }}" method="post" class="needs-validation" autocomplete="off">
                             @csrf
+
+                            <x-formInput name="razonsocial" label="Razón Social" placeholder='label' />
+                            <x-formInput name="contacto" label="Contacto"  placeholder='label'/>
+                            <x-formInput name="correo" type="email" label="Correo Electrónico"  placeholder='label'/>
+                            <x-formInput name="telefono1" label="Telefono"  placeholder='label'/>
+                            <x-formInput name="telefono2" label="Telefono"  placeholder='label'/>
+                            <x-formInput name="cuit" label="CUIT"  placeholder='label'/>
+
+                            <div class="mt-4 form-group">
+                                <label for="" class="form-label">IVA</label>
+                                <select name="iva_id" id="" class="form-select form-select-sm">
+                                    {{-- <option value=1 selected>Sin Definir</option> --}}
+                                    @foreach ($ivas as $iva)
+                                        <option value="{{ $iva->id }}" @selected(old('iva_id') == $iva->id)>
+                                            {{ $iva->descripcion }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <x-formInput name="calle_nombre" label="Nombre calle"  placeholder='label'/>
+                            <x-formInput name="calle_numero" label="Número"  placeholder='label'/>
+                            <x-formInput name="codigo_postal" label="Código Postal"  placeholder='label'/>
+                            <x-formInput name="fecha_alta" label="Fecha alta"  placeholder='label'/>
+                            <x-formArea name="observaciones" rows="4" cols="30" label="Observaciones"  placeholder='label'/>
+
+{{--
                             <div class="form-group">
                                 <label for="razonsocial" class="form-label">Razón Social</label>
                                 <input type="text" id="razonsocial" name="razonsocial" class="form-control @error('razonsocial') is-invalid @enderror" tabindex="1" autofocus
@@ -33,7 +60,6 @@
 
                                     @error('razonsocial')
                                         <span class="invalid-feedback" role="alert">
-                                            {{-- <span class="text-danger">{{ $errors->first('razonsocial') }}</span> --}}
                                             <span class="text-danger">{{ $message }}</span>
                                         </span>
                                     @enderror
@@ -42,11 +68,10 @@
                             <div class="mt-4 form-group">
                                 <label for="contacto" class="form-label">Contacto</label>
                                 <input type="text" id="contacto" name="contacto" class="form-control @error('contacto') is-invalid @enderror" tabindex="2"
-                                    placeholder="Ingrese el Contacto" value="{{ old('contacto','') }}" required>
+                                    placeholder="Ingrese el Contacto" value="{{ old('contacto','') }}">
 
                                     @error('contacto')
                                         <span class="invalid-feedback" role="alert">
-                                            {{-- <span class="text-danger">{{ $errors->first('correo') }}</span> --}}
                                             <span class="text-danger">{{ $message }}</span>
                                         </span>
                                     @enderror
@@ -59,7 +84,6 @@
 
                                     @error('correo')
                                         <span class="invalid-feedback" role="alert">
-                                            {{-- <span class="text-danger">{{ $errors->first('correo') }}</span> --}}
                                             <span class="text-danger">{{ $message }}</span>
                                         </span>
                                     @enderror
@@ -72,7 +96,6 @@
 
                                 @error('telefono1')
                                     <span class="invalid-feedback" role="alert">
-                                        {{-- <span class="text-danger">{{ $errors->first('telefono') }}</span> --}}
                                         <span class="text-danger">{{ $message }}</span>
                                     </span>
                                 @enderror
@@ -85,7 +108,6 @@
 
                                 @error('telefono2')
                                     <span class="invalid-feedback" role="alert">
-                                        {{-- <span class="text-danger">{{ $errors->first('telefono') }}</span> --}}
                                         <span class="text-danger">{{ $message }}</span>
                                     </span>
                                 @enderror
@@ -98,7 +120,6 @@
 
                                 @error('cuit')
                                     <span class="invalid-feedback" role="alert">
-                                        {{-- <span class="text-danger">{{ $errors->first('cuit') }}</span> --}}
                                         <span class="text-danger">{{ $message }}</span>
                                     </span>
                                 @enderror
@@ -107,7 +128,6 @@
                             <div class="mt-4 form-group">
                                 <label for="" class="form-label">IVA</label>
                                 <select name="iva_id" id="" class="form-select form-select-sm">
-                                    {{-- <option value=1 selected>Sin Definir</option> --}}
                                     @foreach ($ivas as $iva)
                                         <option value="{{ $iva->id }}" @selected(old('iva_id') == $iva->id)>
                                             {{ $iva->descripcion }}
@@ -123,7 +143,6 @@
 
                                 @error('calle_nombre')
                                     <span class="invalid-feedback" role="alert">
-                                        {{-- <span class="calle_nombre">{{ $errors->first('calle_nombre') }}</span> --}}
                                         <span class="text-danger">{{ $message }}</span>
                                     </span>
                                 @enderror
@@ -136,7 +155,6 @@
 
                                 @error('calle_numero')
                                     <span class="invalid-feedback" role="alert">
-                                        {{-- <span class="text-danger">{{ $errors->first('calle_numero') }}</span> --}}
                                         <span class="text-danger">{{ $message }}</span>
                                     </span>
                                 @enderror
@@ -149,7 +167,6 @@
 
                                 @error('codigo_postal')
                                     <span class="invalid-feedback" role="alert">
-                                        {{-- <span class="text-danger">{{ $errors->first('codigo_postal') }}</span> --}}
                                         <span class="text-danger">{{ $message }}</span>
                                     </span>
                                 @enderror
@@ -162,7 +179,6 @@
 
                                 @error('fecha_alta')
                                     <span class="invalid-feedback" role="alert">
-                                        {{-- <span class="text-danger">{{ $errors->first('fecha_alta') }}</span> --}}
                                         <span class="text-danger">{{ $message }}</span>
                                     </span>
                                 @enderror
@@ -175,12 +191,11 @@
 
                                 @error('observaciones')
                                     <span class="invalid-feedback" role="alert">
-                                        {{-- <span class="text-danger">{{ $errors->first('observaciones') }}</span> --}}
                                         <span class="text-danger">{{ $message }}</span>
                                     </span>
                                 @enderror
                             </div>
-
+ --}}
                             <div class="mt-4 row d-print-none">
                                 <div class="text-right col-12">
                                     <a href="{{ route('clientes.index') }}" class="btn btn-secondary" tabindex="5">
