@@ -33,19 +33,7 @@
                             <x-formInput name="telefono1" label="Telefono"  placeholder='label'/>
                             <x-formInput name="telefono2" label="Telefono"  placeholder='label'/>
                             <x-formInput name="cuit" label="CUIT"  placeholder='label'/>
-
-                            <div class="mt-4 form-group">
-                                <label for="" class="form-label">IVA</label>
-                                <select name="iva_id" id="" class="form-select form-select-sm">
-                                    {{-- <option value=1 selected>Sin Definir</option> --}}
-                                    @foreach ($ivas as $iva)
-                                        <option value="{{ $iva->id }}" @selected(old('iva_id') == $iva->id)>
-                                            {{ $iva->descripcion }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-
+                            <x-formSelect name="iva_id" label="IVA" :values='$ivas' />
                             <x-formInput name="calle_nombre" label="Nombre calle"  placeholder='label'/>
                             <x-formInput name="calle_numero" label="Número"  placeholder='label'/>
                             <x-formInput name="codigo_postal" label="Código Postal"  placeholder='label'/>
