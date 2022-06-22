@@ -27,18 +27,18 @@
                         <form action="{{ route('clientes.store') }}" method="post" class="needs-validation" autocomplete="off">
                             @csrf
 
-                            <x-formInput name="razonsocial" label="Razón Social" placeholder='label' />
-                            <x-formInput name="contacto" label="Contacto"  placeholder='label'/>
+                            <x-formInput name="razonsocial" label="Razón Social" placeholder='label' required />
+                            <x-formInput name="contacto" label="Contacto" placeholder='label' required/>
                             <x-formInput name="correo" type="email" label="Correo Electrónico"  placeholder='label'/>
-                            <x-formInput name="telefono1" label="Telefono"  placeholder='label'/>
-                            <x-formInput name="telefono2" label="Telefono"  placeholder='label'/>
-                            <x-formInput name="cuit" label="CUIT"  placeholder='label'/>
+                            <x-formInput name="telefono1" label="Telefono" placeholder='label'/>
+                            <x-formInput name="telefono2" label="Telefono" placeholder='label'/>
+                            <x-formInput name="cuit" label="CUIT" placeholder='label' maxlength="11"/>
                             <x-formSelect name="iva_id" label="IVA" :values='$ivas' />
-                            <x-formInput name="calle_nombre" label="Nombre calle"  placeholder='label'/>
-                            <x-formInput name="calle_numero" label="Número"  placeholder='label'/>
-                            <x-formInput name="codigo_postal" label="Código Postal"  placeholder='label'/>
-                            <x-formInput name="fecha_alta" label="Fecha alta"  placeholder='label'/>
-                            <x-formArea name="observaciones" rows="4" cols="30" label="Observaciones"  placeholder='label'/>
+                            <x-formInput name="calle_nombre" label="Nombre calle" placeholder='label'/>
+                            <x-formInput name="calle_numero" label="Número" placeholder='label' maxlength="5"/>
+                            <x-formInput name="codigo_postal" label="Código Postal" placeholder='label'/>
+                            <x-formInput name="fecha_alta" type="date" label="Fecha alta" placeholder='label'/>
+                            <x-formArea name="observaciones" rows="4" cols="30" label="Observaciones" placeholder='label'/>
 
 {{--
                             <div class="form-group">

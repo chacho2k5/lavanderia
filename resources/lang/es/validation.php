@@ -281,10 +281,10 @@ return [
             'rule-name' => 'custom-message',
         ],
         'razonsocial' => [
-            'required' => 'Debe ingresar la Razon Socialllll.',
+            'required' => 'Debe ingresar la :attribute.',
         ],
         'correo' => [
-            'required' => 'Debe ingresar el correo electrónico.',
+            'required' => 'Debe ingresar el :attribute.',
             'email' => 'Dirección de correo no valida.',
             'unique' => 'Dirección de correo existente.',
         ],
@@ -307,7 +307,8 @@ return [
         'telefono1' => 'Telefono',
         'telefono2' => 'Telefono',
         'razonsocial' => 'Razon Social',
-        'correo' => 'Correo Electronico',
+        'correo' => 'Correo Electrónico',
+        'cuit' => 'CUIT'
     ],
 
 ];
