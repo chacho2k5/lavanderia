@@ -74,7 +74,9 @@ class ClienteController extends Controller
     {
         // $cliente = Cliente::find($id);
         // return view('cliente.edit')->with('cliente', $cliente);
-        return view('cliente.edit', compact('cliente'));
+        $ivas = Iva::all();
+        // return view('cliente.edit', compact('cliente'), ['ivas'=>$ivas]);
+        return view('cliente.edit', compact('cliente', 'ivas'));
     }
 
 

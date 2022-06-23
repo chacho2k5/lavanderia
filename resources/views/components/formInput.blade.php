@@ -11,7 +11,8 @@ placeholder -> ''
     'label',
     'name',
     'type' => 'text',
-    'placeholder' => '0'
+    'placeholder' => '0',
+    'value' => ''
 ])
 
 <div class="mt-4 form-group">
@@ -25,7 +26,13 @@ placeholder -> ''
             {{ $attributes->merge(['class' => 'form-control']) }}
         @enderror
         placeholder="{{ $placeholder == 'label' ? $label : ($placeholder == '0' ? '' : $placeholder)}}"
-        value="{{ old($name, '') }}">
+        {{-- value="{{ old('name', isset($cliente) ? $cliente->id : '') }}"> --}}
+
+        @if ($value == '')
+            value="{{ old($name,'') }}">
+        @else
+            value="{{ old($name,$value->$name) }}">
+        @endif
 
         @error($name)
             <span class="invalid-feedback" role="alert">

@@ -26,10 +26,17 @@
                         {{-- <form action="{{ route('clientes.store') }}" method="post" class="needs-validation" autocomplete="off" novalidate> --}}
                         <form action="{{ route('clientes.store') }}" method="post" class="needs-validation" autocomplete="off">
                             @csrf
+                            @php
+                                $data = "";
+                            @endphp
 
-                            <x-formInput name="razonsocial" label="Razón Social" placeholder='label' required />
+                            {{-- <x-formInput name="razonsocial" label="Razón Social" placeholder='label' required />
                             <x-formInput name="contacto" label="Contacto" placeholder='label' required/>
-                            <x-formInput name="correo" type="email" label="Correo Electrónico"  placeholder='label'/>
+                            <x-formInput name="correo" type="email" label="Correo Electrónico"  placeholder='label'/> --}}
+                            <x-formInput name="razonsocial" label="Razón Social" placeholder='label' :value="$data" />
+                            <x-formInput name="contacto" label="Contacto" placeholder='label' :value="$data"/>
+                            <x-formInput name="correo" type="text" label="Correo Electrónico"  placeholder='label'/>
+
                             <x-formInput name="telefono1" label="Telefono" placeholder='label'/>
                             <x-formInput name="telefono2" label="Telefono" placeholder='label'/>
                             <x-formInput name="cuit" label="CUIT" placeholder='label' maxlength="11"/>
