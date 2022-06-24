@@ -19,16 +19,13 @@ placeholder -> ''
 
     <select name="{{ $name }}" id="{{ $name }}" {{ $attributes->merge(['class' => 'form-select form-select-sm']) }}>
         @foreach ($values as $value)
-            {{-- <option value="{{ $value->id }}" @selected(old($name) == $value->id)> --}}
-            {{-- <option value="{{ $value->id }}" @selected(old($name, $sel == $value->id))> --}}
-            {{-- <option value="{{ $value->id }}" @selected(old($value->id, $sel == $value->id))> --}}
-
-            {{-- <option value="{{ $value->id }}" @selected(old($name, $sel == $value->id))>
-                {{ $value->descripcion }}
-            </option> --}}
-
-            <option value="{{ $value->id }}" @if(old($name) == $value->id || $value->id == $sel->iva_id) selected @endif>
-                {{ $value->descripcion . ' ' . $sel->iva_id}}
+            <option value="{{ $value->id }}"
+                @if ($sel == '')
+                    @selected(old($name) == $value->id)>
+                @else
+                    @selected(old($name,$sel->iva_id) == $value->id)>
+                @endif
+                {{ $value->descripcion}}
             </option>
 
             {{-- <option value="{{ $iva->id }}" @if(old('iva_id') == $iva->id || $iva->id == $cliente->iva_id) selected @endif> --}}

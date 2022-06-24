@@ -25,9 +25,10 @@
                         <form action="{{ route('clientes.update', $cliente->id) }}" method="post" class="needs-validation" autocomplete="off">
                             @csrf
                             @method('PUT')
-@php
-    $data = $cliente;
-@endphp
+
+                            @php
+                                $data = $cliente;
+                            @endphp
                             {{-- <x-formInput name="razonsocial" label="Razón Social" placeholder='label' value="{{ old('razonsocial',$cliente->razonsocial) }}" /> --}}
                             <x-formInput name="razonsocial" label="Razón Social" placeholder='label' :value="$data" />
                             <x-formInput name="contacto" label="Contacto" placeholder='label' :value="$data"/>
@@ -36,21 +37,21 @@
                             <x-formInput name="telefono2" label="Telefono" placeholder='label' :value="$data"/>
                             <x-formInput name="cuit" label="CUIT" placeholder='label' maxlength="11" :value="$data"/>
 
-                            <x-formSelect name="iva_id" label="IVA" :values='$ivas' :sel="$cliente" />
+                            <x-formSelect name="iva_id" label="IVA" :values="$ivas" :sel="$cliente" />
 
+                            {{-- {{ old('iva_id') . ' ' . $cliente->iva_id}} --}}
 
-                                {{-- OK
+                                {{-- okokokokokokokokok
                                     <div class="mt-4 form-group">
                                     <label for="" class="form-label">IVA</label>
                                     <select name="iva_id" id="" class="form-select form-select-sm">
                                         @foreach ($ivas as $iva)
-                                            <option value="{{ $iva->id }}" @if(old('iva_id') == $iva->id || $iva->id == $cliente->iva_id) selected @endif>
+                                            <option value="{{ $iva->id }}" @selected(old('iva_id',$cliente->iva_id) == $iva->id)>
                                                 {{ $iva->descripcion }}
                                             </option>
                                         @endforeach
                                     </select>
                                 </div> --}}
-
 
                             <x-formInput name="calle_nombre" label="Nombre calle" placeholder='label' :value="$data"/>
                             <x-formInput name="calle_numero" label="Número" placeholder='label' :value="$data" maxlength="5"/>
