@@ -36,7 +36,7 @@ class StoreClienteRequest extends FormRequest
             // 'telefono1' => ['nullable','alpha_num','between:5,15'],
             'telefono1' => ['nullable','string','between:5,15'],
             'telefono2' => ['nullable','string','between:5,15'],
-            'calle_nombre' => ['nullable','alpha_num','between:3,100'],
+            'calle_nombre' => ['nullable','string','between:3,100'],
             'calle_numero' => ['nullable','digits_between:1,5'],
             'codigo_postal' => ['nullable','alpha_num','between:4,20'],
             'barrio_id' => ['nullable','digits_between:1,5'],

@@ -11,7 +11,8 @@ placeholder -> ''
     'label',
     'name',
     'type' => 'text',
-    'placeholder' => '0'
+    'placeholder' => '0',
+    'value' => ''
 ])
 
 <div class="mt-4 form-group">
@@ -23,7 +24,7 @@ placeholder -> ''
             {{ $attributes->merge(['class' => 'form-control']) }}
         @enderror
         placeholder="{{ $placeholder == 'label' ? $label : ($placeholder == '0' ? '' : $placeholder)}}">
-        {{ old($name, '') }}
+        {{ old($name, $value->$name) }}
     </textarea>
 
         @error($name)
