@@ -26,8 +26,9 @@ placeholder -> ''
             {{ $attributes->merge(['class' => 'form-control']) }}
         @enderror
         placeholder="{{ $placeholder == 'label' ? $label : ($placeholder == '0' ? '' : $placeholder)}}"
-        {{-- value="{{ old('name', isset($cliente) ? $cliente->id : '') }}"> --}}
 
+        {{-- Esto es para cdo se lo llama desde un ALTA y no trae valor x default, tbien se podria ver
+        pasando el parametro "value" distinto --}}
         @if ($value == '')
             value="{{ old($name,'') }}">
         @else

@@ -91,7 +91,7 @@ class ClienteController extends Controller
     public function update(UpdateClienteRequest $request, Cliente $cliente)
     {
         $cliente->update($request->validated());
-        return redirect()->route('clientes.index')->with('success','Cliente modificado exitosamente');
+        return to_route('clientes.index')->with('success','Cliente modificado exitosamente');
 
     }
 
@@ -103,7 +103,9 @@ class ClienteController extends Controller
      */
     public function destroy(Cliente $cliente)
     {
-        //
+        $cliente->delete();
+        return to_route('clientes.index')->with('success','Cliente eliminado');
+        // return view ('cliente.index');
     }
 
     public function zzzzzzzzzzzzdatatable() {
