@@ -1,18 +1,62 @@
+
 @extends('layouts.admin')
 
-@section('title','Sistema Lavanderia')
+@section('css')
+@endsection
 
 @section('content')
-<div class="card">
-    <div class="card-header">
-      Datos del cliente
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="mb-2 row">
+            <div class="col-sm-6">
+                <h3 class="m-0">
+                    Datos del Cliente
+                </h3>
+            </div>
+        </div>
     </div>
-    <div class="card-body">
-      <blockquote class="mb-0 blockquote">
-        <p>A well-known quote, contained in a blockquote element.</p>
-        <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-      </blockquote>
-    </div>
-  </div>
 </div>
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="{{ route('clientes.show', $cliente->id) }}" method="post" class="readonly">
+                            @csrf
+                            <fieldset disabled="disabled">
+
+                            @php $data = $cliente; @endphp
+
+                            @include('cliente.form.controls')
+                            </fieldset>
+                            <div class="mt-4 row d-print-none">
+                                <div class="text-center col-12">
+                                    <a href="{{ route('clientes.index') }}" class="btn btn-primary" tabindex="0">
+                                        <i class="fa fa-fw fa-lg fa-arrow-left"></i>
+                                        Volver
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+
+                        @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 @endsection
+
+@section('js')
+@stop

@@ -10,8 +10,7 @@ placeholder -> ''
  @props([
     'label',
     'name',
-    'type' => 'text',
-    'placeholder' => '0',
+    'placeholder' => '',
     'value' => ''
 ])
 
@@ -23,10 +22,9 @@ placeholder -> ''
         @else
             {{ $attributes->merge(['class' => 'form-control']) }}
         @enderror
-        placeholder="{{ $placeholder == 'label' ? $label : ($placeholder == '0' ? '' : $placeholder)}}">
-        {{ old($name, $value->$name) }}
-    </textarea>
-
+        placeholder="{{ $placeholder == 'label' ? $label : ($placeholder == '' ? '' : $placeholder)}}">{{ $value == '' ? old($name,'') : old($name,$value->$name)}}</textarea>
+        {{-- Usando la directiva @if siempre se sumaba un espacio al inicio --}}
+        {{-- @if ($value == '') {{old($name)}} @else {{old($name,$value->$name)}} @endif --}}
         @error($name)
             <span class="invalid-feedback" role="alert">
                 <span class="text-danger">{{ $message }}</span>

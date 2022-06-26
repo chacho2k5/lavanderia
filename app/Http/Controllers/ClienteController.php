@@ -43,8 +43,8 @@ class ClienteController extends Controller
      */
     public function store(StoreClienteRequest $request)
     {
-        Cliente::create($request->validated()
-                                ->withInput());
+        Cliente::create($request->validated());
+                                // ->withInput());
 
         // return redirect()->route('clientes.index');
         // return $request;
@@ -61,7 +61,9 @@ class ClienteController extends Controller
      */
     public function show(Cliente $cliente)
     {
-        return view('cliente.show');
+        $ivas = Iva::all();
+        return view('cliente.show', compact('cliente', 'ivas'));
+
     }
 
     /**

@@ -10,7 +10,7 @@ placeholder -> ''
  @props([
     'label',
     'name',
-    'values',
+    'value',
     'sel' => ''
 ])
 
@@ -18,9 +18,9 @@ placeholder -> ''
     <label for="{{ $name }}" class="form-label">{{ $label }}</label>
 
     <select name="{{ $name }}" id="{{ $name }}" {{ $attributes->merge(['class' => 'form-select']) }}>
-        @foreach ($values as $value)
-            <option value="{{ $value->id }}" @selected(old($name,$sel) == $value->id)>
-                {{ $value->descripcion}}
+        @foreach ($value as $val)
+            <option value="{{ $val->id }}" @selected(old($name,$sel) == $val->id)>
+                {{ $val->descripcion}}
             </option>
         @endforeach
     </select>
